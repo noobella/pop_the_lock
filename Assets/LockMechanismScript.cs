@@ -21,7 +21,7 @@ public class LockMechanismScript : MonoBehaviour
     void Update()
     {
         // gameObject.transform.Rotate(0, 0, rotationAngle * Time.deltaTime);
-        gameObject.transform.RotateAround(Vector3.zero, Vector3.forward, rotationAngle);
+        gameObject.transform.RotateAround(Vector3.zero, Vector3.back, rotationAngle);
 
     }
 }
