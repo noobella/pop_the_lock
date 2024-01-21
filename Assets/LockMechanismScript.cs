@@ -10,11 +10,9 @@ public class LockMechanismScript : MonoBehaviour
     public BallScript ballScript;
     public LogicScript logicScript;
     private bool scoreIncreased = false;
+    private bool isClockwise = true;
+    private float speedIncrease = 5f;
 
-    public void increaseSpeed(float increaseBy)
-    {
-        speed += increaseBy;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +38,6 @@ public class LockMechanismScript : MonoBehaviour
         Debug.Log("Ball touched trigger");
         if (collision.gameObject.CompareTag("Ball") && Input.GetKeyDown(KeyCode.Space))
         {
-            // whenBallIsHit(true);
             ballScript.setGenerateBall(true);
             scoreIncreased = true;
 
@@ -52,7 +49,6 @@ public class LockMechanismScript : MonoBehaviour
         Debug.Log("Ball inside trigger");
         if (collision.gameObject.CompareTag("Ball") && Input.GetKeyDown(KeyCode.Space) && !scoreIncreased)
         {
-            // whenBallIsHit(true);
             ballScript.setGenerateBall(true);
             scoreIncreased = true;
         }
@@ -73,28 +69,22 @@ public class LockMechanismScript : MonoBehaviour
         {
             Debug.Log("score increased");
             logicScript.increaseScore();
-            if (logicScript.score % 5 == 0)
+            if (logicScript.score % 2 == 0)
             {
-                increaseSpeed(5f);
+                Debug.Log("Speed Increased");
+                if(isClockwise)
+                {
+                    speed += speedIncrease;
+                } else
+                {
+                    speed -= speedIncrease;
+                }
             }
             scoreIncreased = false;
             speed *= -1;
+            isClockwise = (isClockwise) ? false : true;
             Debug.Log("speed: " + speed);
         }
-    }
-
-    public void whenBallIsHit(bool scoreInc)
-    {
-        speed *= -1;
-        Debug.Log("speed: " + speed);
-        ballScript.setGenerateBall(true);
-        logicScript.increaseScore();
-        if (logicScript.score % 5 == 0)
-        {
-            increaseSpeed(5f);
-        }
-        scoreIncreased = scoreInc;
-
     }
 
 }
