@@ -6,12 +6,16 @@ public class LockMechanismScript : MonoBehaviour
 {
 
     private Vector3 cenGlobal;
+    
     public float speed = 45f;
+    private float speedIncrease = 5f;
+    
     public BallScript ballScript;
     public LogicScript logicScript;
+    
     private bool scoreIncreased = false;
     private bool isClockwise = true;
-    private float speedIncrease = 5f;
+    private bool isTouching = false;
 
 
     // Start is called before the first frame update
@@ -30,6 +34,10 @@ public class LockMechanismScript : MonoBehaviour
         if(!ballScript.isDead) {
             gameObject.transform.RotateAround(Vector3.zero, Vector3.back, speed * Time.deltaTime);
         }      
+        if(Input.GetKeyDown(KeyCode.Space) && !isTouching)
+        {
+            speed *= -1;
+        }
 
     }
 
@@ -40,6 +48,7 @@ public class LockMechanismScript : MonoBehaviour
         {
             ballScript.setGenerateBall(true);
             scoreIncreased = true;
+            isTouching = true;
 
         }
     }
@@ -51,6 +60,7 @@ public class LockMechanismScript : MonoBehaviour
         {
             ballScript.setGenerateBall(true);
             scoreIncreased = true;
+            isTouching = true;
         }
 
     }
@@ -81,9 +91,8 @@ public class LockMechanismScript : MonoBehaviour
                 }
             }
             scoreIncreased = false;
-            speed *= -1;
-            isClockwise = (isClockwise) ? false : true;
             Debug.Log("speed: " + speed);
+            isTouching = false;
         }
     }
 

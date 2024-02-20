@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 6646286481700912646, guid: 07ae52444b56d4c40bf172dd0c5e8321, type: 3}
   ballScript: {fileID: 0}
+  logicScript: {fileID: 0}
 --- !u!4 &115053301
 Transform:
   m_ObjectHideFlags: 0
@@ -181,7 +182,7 @@ GameObject:
   - component: {fileID: 133056166}
   m_Layer: 0
   m_Name: LogicManager
-  m_TagString: Untagged
+  m_TagString: Logic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,6 +199,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e0d85625468a1459b6054decf6687a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textScore: {fileID: 1696051454}
+  gameLock: {fileID: 1526583552}
+  lockMechanism: {fileID: 637557358}
+  lockAnimator: {fileID: 1526583555}
+  lockMechAnimator: {fileID: 0}
 --- !u!4 &133056167
 Transform:
   m_ObjectHideFlags: 0
@@ -404,8 +410,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d1b2486cba4064eb65f3838180acc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationAngle: 0.5
+  speed: 45
   ballScript: {fileID: 0}
+  logicScript: {fileID: 0}
 --- !u!212 &637557360
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -540,6 +547,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1056915573
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056915563}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3802463db810ec84cb413acb221f353d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1526583552
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1526583554}
   - component: {fileID: 1526583553}
+  - component: {fileID: 1526583555}
   m_Layer: 0
   m_Name: lock 3
   m_TagString: Lock
@@ -624,6 +653,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1526583555
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526583552}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c00c5f97c0387cb44b909d04e8702287, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1696051452
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,6 +918,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6646286481700912646, guid: 07ae52444b56d4c40bf172dd0c5e8321, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1056915568}
+    - targetCorrespondingSourceObject: {fileID: 6646286481700912646, guid: 07ae52444b56d4c40bf172dd0c5e8321, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1056915573}
   m_SourcePrefab: {fileID: 100100000, guid: 07ae52444b56d4c40bf172dd0c5e8321, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
